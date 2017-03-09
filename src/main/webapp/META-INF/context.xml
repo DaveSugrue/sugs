@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="HostServicesWeb" path="" reloadable="true">
+
+	<!-- Default Work Manager Configuration -->
+	<Resource 
+		name="wm/hsWorkManager" 
+		auth="Container" 
+		type="commonj.work.WorkManager" 
+		factory="de.myfoo.commonj.work.FooWorkManagerFactory" 
+		maxThreads="5" 
+	/>
+
+	<Resource 
+		name="jdbc/amDS" 
+		auth="Container" 
+		type="javax.sql.DataSource" 
+		driverClassName="com.ibm.db2.jcc.DB2Driver" 
+		url="jdbc:db2://10.30.67.92:446/DB2T" 
+		username="SJTAMGMT" 
+		password="B7OTOTKA"
+		removeAbandonedTimeout="30" 
+		maxActive="100"
+   		maxIdle="3600" 
+   		maxWait="10000"
+	/>
+	
+	
+	<!-- DPD data source -->
+	<Resource 
+		name="jdbc/hostServicesDpdDS" 
+		auth="Container" 
+		type="javax.sql.DataSource" 
+		driverClassName="com.ibm.db2.jcc.DB2Driver" 
+		url="jdbc:db2://10.30.67.134:446/DTG0LOC:retrieveMessagesFromServerOnGetMessage=true;" 
+		username="KGTENDR" 
+		password="c0ldra1n"
+		removeAbandonedTimeout="30" 
+		maxActive="100"
+   		maxIdle="3600" 
+   		maxWait="10000"
+	/>
+	
+	<!-- Naps data source -->
+	<Resource 
+		name="jdbc/hostServicesNapsROIDS" 
+		auth="Container" 
+		type="javax.sql.DataSource" 
+		driverClassName="com.ibm.db2.jcc.DB2Driver" 
+		url="jdbc:db2://10.30.67.92:446/DB2T:retrieveMessagesFromServerOnGetMessage=true;" 
+		username="KGTNAPS1" 
+		password="NSRKTD0B"
+		removeAbandonedTimeout="30" 
+		maxActive="100"
+   		maxIdle="3600" 
+   		maxWait="10000"
+   		validationQuery="SELECT 1 from sysibm.sysdummy1"
+	/>
+	
+	<!-- Naps data source -->
+	<Resource 
+		name="jdbc/hostServicesNapsFTBDS" 
+		auth="Container" 
+		type="javax.sql.DataSource" 
+		driverClassName="com.ibm.db2.jcc.DB2Driver" 
+		url="jdbc:db2://10.30.67.92:446/DB2T:retrieveMessagesFromServerOnGetMessage=true;" 
+		username="KHTNAPS1" 
+		password="BATNT2LA"
+		removeAbandonedTimeout="30" 
+		maxActive="100"
+   		maxIdle="3600" 
+   		maxWait="10000"
+   		validationQuery="SELECT 1 from sysibm.sysdummy1"
+	/>
+	
+	<!-- Naps data source -->
+	<Resource 
+		name="jdbc/hostServicesNapsGBDS" 
+		auth="Container" 
+		type="javax.sql.DataSource" 
+		driverClassName="com.ibm.db2.jcc.DB2Driver" 
+		url="jdbc:db2://10.30.67.92:446/DB2T:retrieveMessagesFromServerOnGetMessage=true;" 
+		username="KITNAPS1" 
+		password="MKNRQV3W"
+		removeAbandonedTimeout="30" 
+		maxActive="100"
+   		maxIdle="3600" 
+   		maxWait="10000"
+   		validationQuery="SELECT 1 from sysibm.sysdummy1"
+	/>
+	
+	<!-- Markup data source -->
+	<Resource 
+		name="jdbc/hostServicesMarkupDS" 
+		auth="Container" 
+		type="javax.sql.DataSource" 
+		driverClassName="com.ibm.db2.jcc.DB2Driver" 
+		url="jdbc:db2://10.30.67.134:446/DTG0LOC" 
+		username="KGTMKUP" 
+		password="kslsjfh3"
+		removeAbandonedTimeout="30" 
+		maxActive="100"
+   		maxIdle="3600" 
+   		maxWait="10000"
+   		validationQuery="SELECT 1 from sysibm.sysdummy1"
+	/>
+	
+</Context> 

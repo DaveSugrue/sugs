@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+<Configure class="org.eclipse.jetty.server.Server">
+	
+	<New id="jndiDefaultWorkManager" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>wm/hsWorkManager</Arg>
+		<Arg>
+			<New class="javax.naming.Reference">
+				<Arg>commonj.work.WorkManager</Arg>
+				<Arg>de.myfoo.commonj.work.FooWorkManagerFactory</Arg>
+				<Arg/>
+			</New>
+			<!-- 
+			Switch to this one in production instead of commmonj if we go to Liberty or a WebSphere upgrade results in Jee7 compliance (see: http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/scheduling/commonj/WorkManagerTaskExecutor.html)
+			<New class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+				<Set name="corePoolSize">5</Set>
+				<Set name="maxPoolSize">10</Set>
+			</New>
+			-->	
+		</Arg>
+	</New>
+	
+	<New id="jndiAM" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>jdbc/amDS</Arg>
+		<Arg> 
+			<New class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<Set name="driverClass">com.ibm.db2.jcc.DB2Driver</Set>
+                <Set name="jdbcUrl">jdbc:db2://10.30.67.92:446/DB2T</Set>
+                <Set name="user">SJTAMGMT</Set>
+                <Set name="password">B7OTOTKA</Set>
+                <Set name="acquireIncrement">3</Set>
+                <Set name="idleConnectionTestPeriod">60</Set>
+                <Set name="maxPoolSize">100</Set>
+                <Set name="maxStatements">1</Set>
+                <Set name="maxStatementsPerConnection">1</Set>
+                <Set name="minPoolSize">15</Set>
+                <Set name="maxIdleTime">3600</Set>
+                <Set name="maxIdleTimeExcessConnections">300</Set>
+                <Set name="numHelperThreads">6</Set>
+                <Set name="unreturnedConnectionTimeout">3600</Set>
+			</New>
+		</Arg>
+	</New>		
+	
+	<New id="jndiDPD" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>jdbc/hostServicesDpdDS</Arg>
+		<Arg>
+			<New class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<Set name="driverClass">com.ibm.db2.jcc.DB2Driver</Set>
+				<Set name="jdbcUrl">jdbc:db2://10.30.67.134:446/DTG0LOC:retrieveMessagesFromServerOnGetMessage=true;</Set>
+				<Set name="user">KGTENDR</Set>
+				<Set name="password">c0ldra1n</Set>
+				<Set name="acquireIncrement">3</Set>
+				<Set name="idleConnectionTestPeriod">60</Set>
+				<Set name="maxPoolSize">100</Set>
+				<Set name="maxStatements">1</Set>
+				<Set name="maxStatementsPerConnection">1</Set>
+				<Set name="minPoolSize">15</Set>
+				<Set name="maxIdleTime">3600</Set>
+				<Set name="maxIdleTimeExcessConnections">300</Set>
+				<Set name="numHelperThreads">6</Set>
+				<Set name="unreturnedConnectionTimeout">3600</Set>
+			</New>
+		</Arg>
+	</New>
+
+	<New id="jndiNAPSROI" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>jdbc/hostServicesNapsROIDS</Arg>
+		<Arg>
+			<New class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<Set name="driverClass">com.ibm.db2.jcc.DB2Driver</Set>
+				<Set name="jdbcUrl">jdbc:db2://10.30.67.92:446/DB2T:retrieveMessagesFromServerOnGetMessage=true;</Set>
+				<Set name="user">KGTNAPS1</Set>
+				<Set name="password">NSRKTD0B</Set>
+				<Set name="acquireIncrement">3</Set>
+				<Set name="idleConnectionTestPeriod">60</Set>
+				<Set name="maxPoolSize">100</Set>
+				<Set name="maxStatements">1</Set>
+				<Set name="maxStatementsPerConnection">1</Set>
+				<Set name="minPoolSize">15</Set>
+				<Set name="maxIdleTime">3600</Set>
+				<Set name="maxIdleTimeExcessConnections">300</Set>
+				<Set name="numHelperThreads">6</Set>
+				<Set name="unreturnedConnectionTimeout">3600</Set>
+			</New>
+		</Arg>
+	</New>
+	
+	<New id="jndiNAPSFTB" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>jdbc/hostServicesNapsFTBDS</Arg>
+		<Arg>
+			<New class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<Set name="driverClass">com.ibm.db2.jcc.DB2Driver</Set>
+				<Set name="jdbcUrl">jdbc:db2://10.30.67.92:446/DB2T:retrieveMessagesFromServerOnGetMessage=true;</Set>
+				<Set name="user">KHTNAPS1</Set>
+				<Set name="password">BATNT2LA</Set>
+				<Set name="acquireIncrement">3</Set>
+				<Set name="idleConnectionTestPeriod">60</Set>
+				<Set name="maxPoolSize">100</Set>
+				<Set name="maxStatements">1</Set>
+				<Set name="maxStatementsPerConnection">1</Set>
+				<Set name="minPoolSize">15</Set>
+				<Set name="maxIdleTime">3600</Set>
+				<Set name="maxIdleTimeExcessConnections">300</Set>
+				<Set name="numHelperThreads">6</Set>
+				<Set name="unreturnedConnectionTimeout">3600</Set>
+			</New>
+		</Arg>
+	</New>
+	
+	<New id="jndiNAPSGB" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>jdbc/hostServicesNapsGBDS</Arg>
+		<Arg>
+			<New class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<Set name="driverClass">com.ibm.db2.jcc.DB2Driver</Set>
+				<Set name="jdbcUrl">jdbc:db2://10.30.67.92:446/DB2T:retrieveMessagesFromServerOnGetMessage=true;</Set>
+				<Set name="user">KITNAPS1</Set>
+				<Set name="password">MKNRQV3W</Set>
+				<Set name="acquireIncrement">3</Set>
+				<Set name="idleConnectionTestPeriod">60</Set>
+				<Set name="maxPoolSize">100</Set>
+				<Set name="maxStatements">1</Set>
+				<Set name="maxStatementsPerConnection">1</Set>
+				<Set name="minPoolSize">15</Set>
+				<Set name="maxIdleTime">3600</Set>
+				<Set name="maxIdleTimeExcessConnections">300</Set>
+				<Set name="numHelperThreads">6</Set>
+				<Set name="unreturnedConnectionTimeout">3600</Set>
+			</New>
+		</Arg>
+	</New>
+
+	<New id="jndiMARKUP" class="org.eclipse.jetty.plus.jndi.Resource">
+		<Arg>jdbc/hostServicesMarkupDS</Arg>
+		<Arg>
+			<New class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<Set name="driverClass">com.ibm.db2.jcc.DB2Driver</Set>
+				<Set name="jdbcUrl">jdbc:db2://10.30.67.134:446/DTG0LOC</Set>
+				<Set name="user">KGTMKUP</Set>
+				<Set name="password">kslsjfh3</Set>
+				<Set name="acquireIncrement">3</Set>
+				<Set name="idleConnectionTestPeriod">60</Set>
+				<Set name="maxPoolSize">100</Set>
+				<Set name="maxStatements">1</Set>
+				<Set name="maxStatementsPerConnection">1</Set>
+				<Set name="minPoolSize">15</Set>
+				<Set name="maxIdleTime">3600</Set>
+				<Set name="maxIdleTimeExcessConnections">300</Set>
+				<Set name="numHelperThreads">6</Set>
+				<Set name="unreturnedConnectionTimeout">3600</Set>
+			</New>
+		</Arg>
+	</New>
+
+</Configure>
